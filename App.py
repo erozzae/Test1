@@ -6,7 +6,6 @@ def create_connection(host_name, user_name, user_password, db_name):
     try:
         # Buat koneksi menggunakan sqlalchemy create_engine
         engine = create_engine(f'mysql+mysqlconnector://{user_name}:{user_password}@{host_name}/{db_name}')
-        connection = engine.connect()
         st.info('sukses konek')
         print("Connection to MySQL DB successful")
     except Exception as e:
