@@ -1,0 +1,8 @@
+# Environments
+venv/
+
+# file
+knn_model.pkl
+knn_model_ph10.pkl
+
+.streamlit/secrets.toml
