@@ -14,13 +14,14 @@ import pandas as pd
 #         st.write(f"{row.BitDepth} has a :{row.Hkld}:")
 # connect()
 
-connection_string = f'mysql+pymysql://{st.secrets["username"]}:{st.secrets["password"]}@{st.secrets["host"]}/{st.secrets["database"]}'
-engine = create_engine(connection_string)
+def connect_sql():
+    connection_string = f'mysql+pymysql://{st.secrets["username"]}:{st.secrets["password"]}@{st.secrets["host"]}/{st.secrets["database"]}'
+    return create_engine(connection_string)
 
 @st.cache_data
 def load_data(query):
-    with engine.connect() as connection:
-        result = pd.read_sql(query, connection)
+    db_connect = connect_sql()
+    result = pd.read_sql(query, db_connect)
     return result
 
 # Main function Streamlit
